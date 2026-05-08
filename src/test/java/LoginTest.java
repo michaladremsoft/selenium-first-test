@@ -1,16 +1,16 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.BaseTest;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+
 
         driver.get("https://www.saucedemo.com/");
 
@@ -20,12 +20,11 @@ public class LoginTest {
 
         Assert.assertTrue(driver.getCurrentUrl().contains("inventory"));
 
-        driver.quit();
+
     }
     @Test
     public void invalidLoginShowsError() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+
 
         driver.get("https://www.saucedemo.com/");
 
@@ -37,5 +36,5 @@ public class LoginTest {
 
         Assert.assertTrue(errorMessage.contains("Username and password do not match"));
 
-        driver.quit();
+
     }}

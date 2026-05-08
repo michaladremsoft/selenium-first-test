@@ -1,17 +1,13 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProductsPage;
 
-public class AddToCartTest {
+public class AddToCartTest extends BaseTest {
 
     @Test
     public void userCanAddProductToCart() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
@@ -21,7 +17,5 @@ public class AddToCartTest {
         productsPage.addBackpackToCart();
 
         Assert.assertTrue(productsPage.isProductAddedToCart());
-
-        driver.quit();
     }
 }
